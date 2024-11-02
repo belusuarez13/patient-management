@@ -3,12 +3,17 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 import styles from './patient-card.module.scss';
+import { User } from '../../api/patients';
 
 const CLOSED_CARD = false;
 const VIEW_MORE = 'View More';
 const VIEW_LESS = 'View Less';
 
-export const PatientCard = () => {
+interface PatientCardProps {
+  patient: User;
+}
+
+export const PatientCard = ({ patient }: PatientCardProps) => {
   const [isCardExpanded, setIsCardExpanded] = useState<boolean>(CLOSED_CARD);
 
   function onCardDeatilsClick() {
@@ -17,29 +22,22 @@ export const PatientCard = () => {
 
   return (
     <div className={styles['card']}>
-      <div className={styles['name']}>Real nuevoss</div>
+      <div className={styles['name']}>{patient.name}</div>
       <img
         className={styles['image']}
-        src="http://res.cloudinary.com/duaace1ft/image/upload/v1724979774/pukichwcfa0sdmhq5irm.jpg"
+        src={patient.avatar}
         alt="Patient Image"
       />
-      <a className={styles['website']}>https://squeaky-angstrom.com</a>
+      <a className={styles['website']}>{patient.website}</a>
+      <a className={styles['date']}>
+        {new Date(patient.createdAt).toDateString()}
+      </a>
       <div className={styles['actions']} onClick={onCardDeatilsClick}>
         {isCardExpanded ? VIEW_LESS : VIEW_MORE}
         {isCardExpanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
       </div>
       {isCardExpanded && (
-        <div className={styles['details']}>
-          Pariatur repellat voluptas perferendis error. Sint maiores recusandae
-          minus accusamus sapiente delectus eveniet expedita. Impedit deleniti
-          aliquam non.\nExpedita odit nobis ipsa incidunt in praesentium beatae.
-          Necessitatibus animi ex vero repellendus ipsum quidem sequi. Sint
-          architecto officiis vero labore totam perspiciatis perferendis nisi
-          aspernatur.\nIllum reprehenderit suscipit suscipit sequi libero enim
-          veniam. Aperiam accusantium recusandae blanditiis porro. Laudantium
-          qui harum voluptatem sint tempora. Deleniti nesciunt ratione at minima
-          quaerat.
-        </div>
+        <div className={styles['details']}>{patient.description}</div>
       )}
     </div>
   );

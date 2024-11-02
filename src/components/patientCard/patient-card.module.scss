@@ -12,9 +12,14 @@
   position: relative;
 
   .name {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #333;
     margin: 0;
+  }
+
+  .date {
+    font-size: 0.8rem;
+    color: #333;
   }
 
   .image {
