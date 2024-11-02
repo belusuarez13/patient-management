@@ -1,0 +1,56 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18.75rem;
+  padding: 1.25rem;
+  border-radius: 0rem;
+  box-shadow: 0rem 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  position: relative;
+
+  .name {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+  }
+
+  .image {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.9rem;
+    border: 0.125rem solid #3a1ddf;
+  }
+
+  .website {
+    color: #3a1ddf;
+    margin-top: 0.625rem;
+    cursor: pointer;
+  }
+
+  .actions {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0.5rem 0rem;
+  }
+
+  .details {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 0.8rem;
+    border-radius: 0rem 0rem 0rem 0rem;
+    box-shadow: 0rem 0.125rem 0rem rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+}
