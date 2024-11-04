@@ -1,28 +1,38 @@
-import { useQuery } from '@tanstack/react-query';
-import { Loader, PatientList } from '../../components';
+import { Loader, PatientList, PatientModal } from '../../components';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { strings } from './strings';
 
 import styles from './home-page.module.scss';
-import { getPatientsList, User } from '../../api/patients';
+import { useHomeController } from './hooks/useHomeController.hook';
+import { Toaster } from 'react-hot-toast';
+
 
 export const HomePage = () => {
-  const {
-    data: patients,
-    error,
-    isLoading,
-  } = useQuery<User[], Error>({
-    queryKey: ['patient-data'],
-    queryFn: getPatientsList,
-  });
+const { isModalOpen, onModalClose, onModalOpen, error, isLoading } = useHomeController();
 
   return (
     <div className={styles['home-container']}>
-      <h1 className={styles['title']}>Patients</h1>
+      <Toaster />
+      <PatientModal
+        isOpen={isModalOpen}
+        onClose={onModalClose}
+      />
+      <div className={styles['title-actions-container']}>
+        <h1 className={styles['title']}>{strings.patients}</h1>
+        <button className={styles['add-container']} title={strings.addPatient} onClick={onModalOpen}>
+          {strings.addPatient}
+          <AddCircleOutlineIcon
+            fontSize="large"
+            className={styles['add-icon']}
+          />
+        </button>
+      </div>
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <div>An error occurred fetching information</div>
+        <div>{strings.errorFetching}</div>
       ) : (
-        <PatientList patients={patients} />
+        <PatientList />
       )}
     </div>
   );

@@ -1,8 +1,32 @@
 .home-container {
-  width: 80%;
+  width: 95%;
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  .title-actions-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .add-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      cursor: pointer;
+      background-color: #5437f3;
+      color: white;
+
+      &:hover {
+        background-color: rgb(36, 139, 139);
+      }
+
+      .add-icon {
+        margin-left: 0.5rem;
+      }
+    }
+  }
 
   .title {
     align-self: flex-start;
