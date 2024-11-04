@@ -5,7 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { User } from '../../api/patients';
 
 import styles from './patient-card.module.scss';
-import { strings } from './strings';
+import { strings } from '../../dictionary/strings';
 import { PatientModal } from '../modals/patientModal/PatientModal.component';
 
 const CLOSED = false;

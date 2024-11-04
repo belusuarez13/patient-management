@@ -13,19 +13,19 @@
 
 .modal-content {
   background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  width: 400px;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  width: 25rem;
   position: relative;
 }
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0.625rem;
+  right: 0.625rem;
   border: none;
   background: transparent;
-  font-size: 24px;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
@@ -34,15 +34,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
 }
 
 .input {
-  width: calc(100% - 16px);
-  padding: 8px;
-  margin-top: 4px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  width: calc(100% - 1rem);
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.5rem;
   resize: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -51,8 +51,8 @@
   background: #3498db;
   color: #fff;
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.25rem;
   cursor: pointer;
 }
 
@@ -64,30 +64,30 @@
   background: rgb(214, 62, 62);
   color: #fff;
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  margin-right: 10px;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
 
   cursor: pointer;
 
   &:hover {
     background: rgb(221, 95, 95);
-  }  
+  }
 }
 
 .input::-webkit-scrollbar {
-  width: 0.8rem;
+  width: 12.8px;
 }
 
 .input::-webkit-scrollbar-track {
   background: #bde7ff;
-  border-radius: 1rem;
+  border-radius: 16px;
 }
 
 .input::-webkit-scrollbar-thumb {
   background-color: #3a1ddf;
-  border-radius: 1rem;
-  border: 0.125rem solid #bde7ff;
+  border-radius: 16px;
+  border: 2px solid #bde7ff;
 }
 
 .input {

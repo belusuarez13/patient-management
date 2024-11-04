@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './patient-modal.module.scss';
 import { User } from '../../../api/patients';
 import { usePatientsStore } from '../../../stores/Patients.store';
-import { strings } from './strings';
+import { strings } from '../../../dictionary/strings';
 import { LabelInput } from '../../index';
 import { TEXTAREA_TYPE } from '../../input/LabelInput.component';
 import toast from 'react-hot-toast';
@@ -13,8 +13,8 @@ const emptyUser: User = {
   description: '',
   avatar: '',
   id: '',
-  createdAt: new Date().toISOString()
-}
+  createdAt: new Date().toISOString(),
+};
 
 interface ModalProps {
   patient?: User;
@@ -25,12 +25,14 @@ interface ModalProps {
 export const PatientModal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
-  patient
+  patient,
 }) => {
   const [formData, setFormData] = useState<User>(patient || emptyUser);
-  const { onAddPatient, onUpdatePatient} = usePatientsStore();
+  const { onAddPatient, onUpdatePatient } = usePatientsStore();
 
-  function onValueChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+  function onValueChange(
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   }
@@ -39,10 +41,10 @@ export const PatientModal: React.FC<ModalProps> = ({
     event.preventDefault();
     if (patient) {
       onUpdatePatient(formData);
-      toast.success(strings.patientUpdated)
+      toast.success(strings.patientUpdated);
     } else {
       onAddPatient(formData);
-      toast.success(strings.patientAdded)
+      toast.success(strings.patientAdded);
     }
     onClose();
   }
@@ -55,16 +57,46 @@ export const PatientModal: React.FC<ModalProps> = ({
         </button>
         <h2>{patient ? strings.updatePatient : strings.addPatient}</h2>
         <form onSubmit={onSubmit}>
-          <LabelInput label={strings.name} type="text" value={formData.name} name='name' onValueChange={onValueChange} />
-          <LabelInput label={strings.website} type="url" value={formData.website} name='website' onValueChange={onValueChange} />
-          <LabelInput label={strings.description} type={TEXTAREA_TYPE} value={formData.description} name='description' onValueChange={onValueChange} />
-          <LabelInput label={strings.avatar} type="url" value={formData.avatar} name='avatar' onValueChange={onValueChange} />
-          <button type="button" className={styles['cancel-button']} onClick={onClose}>{strings.cancel}</button>
-          <button type="submit" className={styles['button']}>{strings.save}</button>
+          <LabelInput
+            label={strings.name}
+            type="text"
+            value={formData.name}
+            name="name"
+            onValueChange={onValueChange}
+          />
+          <LabelInput
+            label={strings.website}
+            type="url"
+            value={formData.website}
+            name="website"
+            onValueChange={onValueChange}
+          />
+          <LabelInput
+            label={strings.description}
+            type={TEXTAREA_TYPE}
+            value={formData.description}
+            name="description"
+            onValueChange={onValueChange}
+          />
+          <LabelInput
+            label={strings.avatar}
+            type="url"
+            value={formData.avatar}
+            name="avatar"
+            onValueChange={onValueChange}
+          />
+          <button
+            type="button"
+            className={styles['cancel-button']}
+            onClick={onClose}
+          >
+            {strings.cancel}
+          </button>
+          <button type="submit" className={styles['button']}>
+            {strings.save}
+          </button>
         </form>
       </div>
     </div>
-  ) : (
-    null
-  );
+  ) : null;
 };
